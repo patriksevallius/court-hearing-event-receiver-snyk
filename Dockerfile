@@ -1,4 +1,4 @@
-FROM openjdk:22-ea-15-jdk-slim-bullseye AS builder
+FROM openjdk:22-ea-slim-bookworm AS builder
 
 ARG BUILD_NUMBER
 ENV BUILD_NUMBER ${BUILD_NUMBER:-1_0_0}
@@ -7,7 +7,7 @@ WORKDIR /app
 ADD . .
 RUN ./gradlew assemble -Dorg.gradle.daemon=false
 
-FROM openjdk:22-ea-15-jdk-slim-bullseye
+FROM openjdk:22-ea-slim-bookworm
 LABEL maintainer="HMPPS Digital Studio <info@digital.justice.gov.uk>"
 
 ARG BUILD_NUMBER
